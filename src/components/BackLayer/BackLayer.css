@@ -5,10 +5,12 @@
 	display: flex;
 	flex-direction: column;
 	flex-wrap: nowrap;
-	justify-content: space-between;
+	align-items: center;
+
 }
 
 .menu {
+	width: 100%;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -65,7 +67,9 @@
 }
 
 .hamburger-options.active {
+	width: min-content;
 	padding: 3% 0;
 	max-height: 100%;
 	opacity: 1;
+	cursor: pointer;
 }
