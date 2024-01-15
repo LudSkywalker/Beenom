@@ -45,7 +45,7 @@ export const paymentSlice = createSlice({
 		},
 		decrementQuantity: (state) => {
 			if (state.quantity && state.quantity > 1) {
-				state.quantity = (state.quantity || 0) + 1;
+				state.quantity -= 1;
 				state.totalPrice = state.quantity * priceUnitBeenom;
 			}
 		},
