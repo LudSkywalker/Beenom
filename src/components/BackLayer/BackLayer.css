@@ -1,12 +1,12 @@
 .back-layer {
 	width: 100%;
-	min-height: 100px;
+	min-height: 90px;
 	transition: height 0.3s;
 	display: flex;
 	flex-direction: column;
 	flex-wrap: nowrap;
 	align-items: center;
-
+	align-content: space-between;
 }
 
 .menu {
@@ -27,7 +27,7 @@
 .icon img {
 	padding: 1%;
 	width: 20%;
-	min-width: 100px;
+	min-width: 60px;
 }
 
 .hambuger {
@@ -63,13 +63,16 @@
 	opacity: 0;
 	padding: 0;
 	max-height: 0;
-
 }
 
 .hamburger-options.active {
 	width: min-content;
-	padding: 3% 0;
+	padding: 1% 0;
 	max-height: 100%;
 	opacity: 1;
 	cursor: pointer;
+}
+
+.hamburger-options.active:hover {
+	color: white;
 }

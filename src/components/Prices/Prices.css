@@ -1,0 +1,103 @@
+.prices {
+    min-height: 420px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+}
+
+.prices.active {
+    flex-direction: column-reverse;
+}
+
+.quantity {
+    padding: 2%;
+    display: flex;
+    justify-content: center;
+}
+
+.quantity button {
+    padding: 0 10px;
+    margin: 0 20px;
+}
+
+.pay-data {
+    position: absolute;
+    top: 15%;
+    font-size: 1em;
+
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+    width: 85%;
+    text-align: left;
+    border-radius: 10px;
+    box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.7);
+    overflow-y: auto;
+    transition: height 0.3s, opacity 0.3s, ;
+    height: 0;
+    opacity: 0;
+    z-index: -1;
+    display: none;
+}
+
+
+.pay-data.active {
+    display: flex;
+    padding: 4% 6%;
+    height: 80%;
+    opacity: 1;
+    z-index: 10;
+}
+
+.pay-data .close-button {
+    padding: 2%;
+    margin: 0;
+    width: 45px;
+    height: 45px;
+    margin-left: auto;
+}
+
+.pay-data h2 {
+    margin-bottom: 4%;
+}
+
+.pay-data .date-picker,
+.pay-data .document {
+    display: flex;
+
+}
+
+.pay-data .document input {
+    width: 100%;
+}
+
+.pay-data select {
+    margin-right: 1%;
+    padding: 0 1%;
+}
+
+.car-details {
+    display: flex;
+    align-content: space-between;
+    justify-content: space-between;
+}
+
+.car-details h3,
+.car-details div {
+    display: flex;
+    width: 40%;
+}
+
+
+
+.car-details div input,
+.car-details div select {
+    padding: 5% 2%;
+    width: 100%;
+    min-width: 70px;
+}
+.pay-data button {
+    margin: 6% 0;
+    
+}

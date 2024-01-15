@@ -2,7 +2,7 @@ import BeenomIcon from "./../../assets/Beenom.svg";
 import "./BackLayer.css";
 import { RootState } from "../../redux/store";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleHambuger, chageItem } from "../../redux/hamburguerState";
+import { toggleHambuger, chageItem } from "../../redux/hamburguerSlice";
 
 function BackLayer() {
 	const activeHamburger = useSelector(

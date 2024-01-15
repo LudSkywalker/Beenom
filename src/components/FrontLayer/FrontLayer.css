@@ -1,9 +1,11 @@
 .front-layer {
 	background-color: #ffffff;
 	width: 100%;
-	height: 84%;
+	height: 90%;
+	overflow-y: auto;
+	padding: 3% 8%;
+	line-height: 1.5;
 	transition: height 0.3s, visibility 0.3s;
-	padding: 4%;
 }
 
 .front-layer.inactive {
@@ -11,6 +13,18 @@
 	visibility: hidden;
 }
 
-.front-layer h1 {
-	padding: 3%;
+.front-layer img {
+	height: 10%;
+	width: 60%;
+	max-width: 400px;
+	max-height: 300px;
+	padding: 4%;
+}
+
+.front-layer li {
+	display: inline-block;
+}
+
+.front-layer button {
+	margin: 10%;
 }

@@ -6,11 +6,8 @@ import { RootState } from "../../redux/store";
 import { useSelector } from "react-redux";
 
 function FrontLayer() {
-	const activeHamburger = useSelector(
-		(state: RootState) => state.hamburguer.activeHamburger
-	);
-	const activeItem = useSelector(
-		(state: RootState) => state.hamburguer.activeItem
+	const { activeHamburger, activeItem } = useSelector(
+		(state: RootState) => state.hamburguer
 	);
 
 	const itemList = {
