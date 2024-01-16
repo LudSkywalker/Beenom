@@ -33,7 +33,7 @@ function Payment() {
 		expirationMonth = 0,
 		documentType = "",
 		documentNumber = 0,
-		instalments = "",
+		instalments = 1,
 		CVV = 0,
 		errors,
 		processState = ProcessPaymentStates.Proccess,
@@ -78,6 +78,7 @@ function Payment() {
 			if (errorsList != "") {
 				return dispatch(setErrors(errors + errorsList));
 			}
+			dispatch(setErrors(""));
 			dispatch(setProcessState(ProcessPaymentStates.Confirm));
 		} else if (currentState == ProcessPaymentStates.Confirm) {
 			const validCard = isValidCreditCard(card);
@@ -92,6 +93,7 @@ function Payment() {
 	return (
 		<form
 			id="paymentForm"
+			role="paymentForm"
 			onSubmit={(e) => e.preventDefault()}
 			className={`pay-data ${onPay && !activeHamburger ? "active" : ""}`}
 		>
@@ -112,6 +114,7 @@ function Payment() {
 				<h2>Amount to pay: ${totalPrice.toLocaleString("es-CO")}</h2>
 				<h3>Name and lastname:</h3>
 				<input
+					role="nameInput"
 					onChange={(e) =>
 						updatePaymentData({ userName: e.target.value })
 					}
@@ -120,6 +123,7 @@ function Payment() {
 				/>
 				<h3>Email:</h3>
 				<input
+					role="emailInput"
 					onChange={(e) =>
 						updatePaymentData({ email: e.target.value })
 					}
@@ -128,6 +132,7 @@ function Payment() {
 				/>
 				<h3>Phone number:</h3>
 				<input
+					role="phoneInput"
 					onChange={(e) =>
 						updatePaymentData({
 							phone: e.target.value,
@@ -139,6 +144,7 @@ function Payment() {
 				<h3>Card number:</h3>
 				<div className="card-details">
 					<input
+						role="cardInput"
 						onChange={(e) =>
 							updatePaymentData({
 								card: e.target.value.replace(/\D/g, ""),
@@ -163,6 +169,7 @@ function Payment() {
 				<div className="card-details">
 					<div className="date-picker">
 						<select
+							role="monthInput"
 							defaultValue={expirationMonth}
 							onChange={(e) =>
 								updatePaymentData({
@@ -182,6 +189,7 @@ function Payment() {
 							))}
 						</select>
 						<select
+							role="yearInput"
 							defaultValue={expirationYear}
 							onChange={(e) =>
 								updatePaymentData({
@@ -203,6 +211,7 @@ function Payment() {
 					</div>
 					<div>
 						<input
+							role="cvvInput"
 							onChange={(e) =>
 								updatePaymentData({
 									CVV: parseInt(
@@ -218,14 +227,17 @@ function Payment() {
 				<h3>Document Number:</h3>
 				<div className="document">
 					<select
-						defaultValue={documentType}
+						role="docTypeInput"
+						defaultValue={
+							documentType == "" ? "Type" : documentType
+						}
 						onChange={(e) =>
 							updatePaymentData({
 								documentType: e.target.value,
 							})
 						}
 					>
-						<option disabled value="">
+						<option disabled hidden value="Type">
 							Type
 						</option>
 						{documentTypes.map((type) => (
@@ -235,6 +247,7 @@ function Payment() {
 						))}
 					</select>
 					<input
+						role="docNumberInput"
 						onChange={(e) =>
 							updatePaymentData({
 								documentNumber: parseInt(
@@ -251,12 +264,15 @@ function Payment() {
 					<button onClick={() => dispatch(decrementInstalments())}>
 						-
 					</button>
-					<p>{instalments}</p>
+					<p role="instalments">{instalments}</p>
 					<button onClick={() => dispatch(incrementInstalments())}>
 						+
 					</button>
 				</div>
-				<div className={`errors ${errors != "" ? "active" : ""}`}>
+				<div
+					role="errors"
+					className={`errors ${errors != "" ? "active" : ""}`}
+				>
 					<strong>{errors}</strong>
 				</div>
 			</div>

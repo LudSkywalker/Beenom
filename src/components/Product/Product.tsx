@@ -4,7 +4,7 @@ import ProductImg from "../../assets/Product.svg";
 function Product() {
 	return (
 		<div className={``}>
-			<h1>Product</h1>
+			<h1 role="title">Product</h1>
 			<img src={ProductImg} alt="" />
 			<div>
 				<p>

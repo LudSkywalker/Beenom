@@ -4,7 +4,7 @@ import HistoryImg from "../../assets/History.jpg";
 function History() {
 	return (
 		<div className={`history`}>
-			<h1>History </h1>
+			<h1 role="title">History </h1>
 
 			<img src={HistoryImg} alt="" />
 			<p>

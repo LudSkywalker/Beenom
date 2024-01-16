@@ -5,7 +5,7 @@ export interface hamburguerState {
 	activeItem: string;
 }
 
-const initialState: hamburguerState = {
+export const initialState: hamburguerState = {
 	activeHamburger: false,
 	activeItem: "Product",
 };
@@ -17,13 +17,13 @@ export const hamburguerSlice = createSlice({
 		toggleHambuger: (state) => {
 			state.activeHamburger = !state.activeHamburger;
 		},
-		chageItem: (state, { payload: item }) => {
+		changeItem: (state, { payload: item }) => {
 			state.activeHamburger = false;
 			state.activeItem = item;
 		},
 	},
 });
 
-export const { toggleHambuger, chageItem } = hamburguerSlice.actions;
+export const { toggleHambuger, changeItem } = hamburguerSlice.actions;
 
 export default hamburguerSlice.reducer;

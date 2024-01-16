@@ -4,7 +4,7 @@ import "./App.css";
 
 function App() {
 	return (
-		<div className="backdrop">
+		<div className="backdrop" role="Backdrop">
 			<BackLayer />
 			<FrontLayer />
 		</div>

@@ -10,7 +10,7 @@ Fronted app (a mini store for buy pills of bee venom) building with [React](http
 $ npm install
 ```
 
-## Running the app
+## Run the app
 
 ```bash
 # development
@@ -21,4 +21,12 @@ $ npm run build
 
 # preview
 $ npm run preview
+```
+
+## Test the app
+This app is replacing jest with vitest because compatibility toolkits permit work better with vitest, and the sintaxis and logic of both are ver similar
+
+```bash
+# development
+$ npm run test
 ```

@@ -13,9 +13,13 @@ export const getCreditCardBrand = (cardNumber: string): JSX.Element => {
 		src = AmericanExpress;
 	}
 	if (src) {
-		return <img src={src} alt="" className="card-icon" />;
+		return <img src={src} alt="" role="card-icon" className="card-icon" />;
 	}
-	return <h3 className="card-icon">N/A</h3>;
+	return (
+		<h3 role="card-icon" className="card-icon">
+			N/A
+		</h3>
+	);
 };
 
 export const isValidCreditCard = (cardNumber: string): boolean => {

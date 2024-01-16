@@ -20,7 +20,7 @@ function Prices() {
 	return (
 		<div className={`prices ${onPay ? "active" : ""}`}>
 			<div className={`pay-summary ${!onPay ? "active" : ""}`}>
-				<h1>Prices</h1>
+				<h1 role="title">Prices</h1>
 
 				<h3>Product name:</h3>
 				<p>Beenom pills</p>
@@ -29,7 +29,7 @@ function Prices() {
 					<button onClick={() => dispatch(decrementQuantity())}>
 						-
 					</button>
-					<p>{quantity}</p>
+					<p role="quantity">{quantity}</p>
 					<button onClick={() => dispatch(incrementQuantity())}>
 						+
 					</button>

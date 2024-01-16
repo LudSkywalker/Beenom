@@ -27,7 +27,7 @@ export interface paymentState {
 	processState?: ProcessPaymentStates;
 }
 
-const initialState: paymentState = {
+export const initialState: paymentState = {
 	quantity: 1,
 	totalPrice: priceUnitBeenom,
 	onPay: false,

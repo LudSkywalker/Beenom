@@ -17,7 +17,10 @@ function FrontLayer() {
 	};
 	const Content = itemList[activeItem as keyof typeof itemList];
 	return (
-		<div className={`front-layer ${activeHamburger ? "inactive" : ""}`}>
+		<div
+			role="FrontLayer"
+			className={`front-layer ${activeHamburger ? "inactive" : ""}`}
+		>
 			<Content />
 		</div>
 	);
