@@ -1,19 +1,21 @@
 :root {
+	--bee-color: #ffce2f;
 	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 	line-height: 1.7;
 	font-weight: 400;
-	font-size: larger;
+	font-size: 120%;
 	color: #2c2147;
-	background-color: #ffce2f;
 
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	height: 100%;
+	background-color: var(--bee-color);
 }
 
 * {
+	outline: 0;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -23,7 +25,6 @@
 body {
 	height: 100%;
 }
-
 
 button {
 	border-radius: 8px;
@@ -39,7 +40,7 @@ button {
 }
 
 button:hover {
-	color: #ffce2f;
+	color: var(--bee-color);
 }
 
 input,
@@ -56,5 +57,20 @@ select {
 
 input:hover,
 select:hover {
-	border: 1px solid #ffce2f;
+	border: 2px solid var(--bee-color);
+}
+
+input:focus,
+select:focus {
+	border: 2px solid var(--bee-color);
+}
+
+input:focus-visible,
+select:focus-visible {
+	border: 2px solid var(--bee-color);
+}
+
+input:active,
+select:active {
+	border: 2px solid var(--bee-color);
 }

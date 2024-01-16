@@ -3,6 +3,12 @@ import { createSlice } from "@reduxjs/toolkit";
 const priceUnitBeenom = 4000;
 export const documentTypes = ["CC", "CE", "TI"];
 
+export enum ProcessPaymentStates {
+	Proccess = "Proccess",
+	Confirm = "Confirm",
+	Success = "Success",
+	Fail = "Fail",
+}
 export interface paymentState {
 	quantity?: number;
 	totalPrice?: number;
@@ -11,12 +17,14 @@ export interface paymentState {
 	userName?: string;
 	phone?: string;
 	card?: string;
-	expirationYear?: number | null;
-	expirationMonth?: number | null;
-	CVV?: number | null;
+	expirationYear?: number;
+	expirationMonth?: number;
+	CVV?: number;
 	documentType?: string;
-	documentNumber?: number | null;
+	documentNumber?: number;
 	instalments?: number;
+	errors?: string;
+	processState?: ProcessPaymentStates;
 }
 
 const initialState: paymentState = {
@@ -27,12 +35,14 @@ const initialState: paymentState = {
 	userName: "",
 	phone: "",
 	card: "",
-	expirationYear: null,
-	expirationMonth: null,
-	CVV: null,
+	expirationYear: 0,
+	expirationMonth: 0,
+	CVV: 0,
 	documentType: "",
-	documentNumber: null,
+	documentNumber: 0,
 	instalments: 1,
+	errors: "",
+	processState: ProcessPaymentStates.Proccess,
 };
 
 export const paymentSlice = createSlice({
@@ -52,44 +62,26 @@ export const paymentSlice = createSlice({
 		toggleOnPay: (state) => {
 			state.onPay = !state.onPay;
 		},
-		setPaymentData: (
-			state,
-			{
-				payload: {
-					email,
-					phone,
-					card,
-					userName,
-					expirationYear,
-					expirationMonth,
-					CVV,
-					documentType,
-					documentNumber,
-					instalments,
-				},
+		setPaymentData: (state, { payload }) => {
+			const newState = { ...state, ...payload };
+			return newState;
+		},
+		cancelPayment: () => {
+			return initialState;
+		},
+		incrementInstalments: (state) => {
+			state.instalments = (state.instalments || 0) + 1;
+		},
+		decrementInstalments: (state) => {
+			if (state.instalments && state.instalments > 1) {
+				state.instalments -= 1;
 			}
-		) => {
-			state.email = email != undefined ? email : state.email;
-			state.userName = userName != undefined ? userName : state.userName;
-			state.phone = phone != undefined ? phone : state.phone;
-			state.card = card != undefined ? card : state.card;
-			state.expirationYear =
-				expirationYear != undefined
-					? expirationYear
-					: state.expirationYear;
-			state.expirationMonth =
-				expirationMonth != undefined
-					? expirationMonth
-					: state.expirationMonth;
-			state.CVV = CVV != undefined ? CVV : state.CVV;
-			state.documentType =
-				documentType != undefined ? documentType : state.documentType;
-			state.documentNumber =
-				documentNumber != undefined
-					? documentNumber
-					: state.documentNumber;
-			state.instalments =
-				instalments != undefined ? instalments : state.instalments;
+		},
+		setErrors: (state, { payload: errors }) => {
+			state.errors = errors;
+		},
+		setProcessState: (state, { payload: processState }) => {
+			state.processState = processState;
 		},
 	},
 });
@@ -99,6 +91,11 @@ export const {
 	decrementQuantity,
 	toggleOnPay,
 	setPaymentData,
+	cancelPayment,
+	incrementInstalments,
+	decrementInstalments,
+	setErrors,
+	setProcessState,
 } = paymentSlice.actions;
 
 export default paymentSlice.reducer;

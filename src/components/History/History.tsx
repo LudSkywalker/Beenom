@@ -1,5 +1,5 @@
 import "./History.css";
-import HistoryImg from "../../assets/history.jpg";
+import HistoryImg from "../../assets/History.jpg";
 
 function History() {
 	return (

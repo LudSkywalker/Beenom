@@ -1,0 +1,115 @@
+.pay-data {
+	position: absolute;
+	top: 8%;
+	font-size: 1em;
+	width: 85%;
+	text-align: left;
+	border-radius: 10px;
+	box-shadow: 8px 8px 30px rgba(0, 0, 0, 0.8);
+	transition: height 0.3s, opacity 0.3s;
+	height: 0;
+	opacity: 0;
+	z-index: -1;
+	display: none;
+}
+
+.pay-data.active {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	background-color: white;
+	padding: 4% 6%;
+	min-height: 88%;
+	opacity: 1;
+	z-index: 10;
+	overflow-y: auto;
+}
+
+.pay-data .close-button {
+	padding: 1%;
+	margin: 0;
+	width: 45px;
+	height: 45px;
+	margin-left: auto;
+}
+
+.pay-data .process-button {
+	z-index: 20;
+	flex-wrap: wrap;
+	margin: 6% 4%;
+}
+
+.pay-content {
+	opacity: 0;
+	height: 0;
+	z-index: 0;
+	display: none;
+}
+
+.pay-content.active {
+	height: 300vmax;
+	opacity: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: first baseline;
+	background-color: white;
+	z-index: 10;
+}
+
+.pay-content h2 {
+	margin-bottom: 4%;
+}
+
+.date-picker,
+.document {
+	display: flex;
+}
+
+.document input {
+	width: 100%;
+}
+
+.pay-content select {
+	margin-right: 1%;
+	padding: 0 1%;
+}
+
+.card-details {
+	display: flex;
+	align-content: space-between;
+	justify-content: space-between;
+}
+
+.card-details * {
+	display: flex;
+	width: 40%;
+}
+
+.card-details input,
+.card-details select {
+	width: 100%;
+}
+
+.card-details select {
+	padding: 5% 2%;
+	min-width: 70px;
+}
+
+.card-icon {
+	width: 80px !important;
+	height: 70px !important;
+	padding: 10px !important;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+}
+
+.errors {
+	opacity: 0;
+	color: var(--bee-color);
+}
+
+.errors.active {
+	opacity: 1;
+}
