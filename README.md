@@ -32,7 +32,7 @@ This app is replacing jest with vitest because compatibility toolkits permit wor
 $ npm run test
 ```
 
-### Covage
+### Coverage
 
 The result of coverage of the test based on the v8 coverage tool is:
 
