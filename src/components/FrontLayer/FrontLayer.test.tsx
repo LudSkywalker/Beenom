@@ -14,18 +14,23 @@ afterAll(() => {
 });
 
 describe("FrontLayer", async () => {
-	it("Render FrontLayer component", async () => {
-		await screen.findByRole("FrontLayer");
+	it("Render FrontLayer component and all the internal subcomponents", async () => {
+		const frontLater = await screen.findByRole("FrontLayer");
+		const content = await screen.findByRole("Content");
+
+		expect(frontLater).not.toBeNull();
+		expect(content).not.toBeNull();
 	});
 
-	it("Show options from hamburger", async () => {
-		const itemsList = ["Product", "History", "Prices"];
+	const itemsList  = ["Product", "History", "Prices"];
 
-		for (const item of itemsList) {
+	itemsList.map((item) => {
+		it(`Show option ${item} from hamburger`, async () => {
 			await store.dispatch(changeItem(item));
 			await screen.findByText(item);
 			const title = await screen.findByRole("title");
+
 			expect(title.innerHTML).toContain(item);
-		}
+		});
 	});
 });

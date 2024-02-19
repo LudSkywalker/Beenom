@@ -1,12 +1,12 @@
 import "./History.css";
-import HistoryImg from "../../assets/History.jpg";
+import HistoryImg from "../../../assets/History.jpg";
 
 function History() {
 	return (
-		<div className={`history`}>
+		<div className={`history`} role="Content">
 			<h1 role="title">History </h1>
 
-			<img src={HistoryImg} alt="" />
+			<img src={HistoryImg} alt="History Img" />
 			<p>
 				Bee venom, used for its healing properties, has a rich history
 				dating back to ancient civilizations. In the 19th century, Baron

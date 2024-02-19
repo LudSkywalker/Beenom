@@ -1,11 +1,11 @@
 import "./Product.css";
-import ProductImg from "../../assets/Product.svg";
+import ProductImg from "../../../assets/Product.svg";
 
 function Product() {
 	return (
-		<div className={``}>
+		<div className={``} role="Content">
 			<h1 role="title">Product</h1>
-			<img src={ProductImg} alt="" />
+			<img src={ProductImg} alt="Product img" />
 			<div>
 				<p>
 					Bee venom pills is harness the therapeutic power of bee

@@ -1,6 +1,6 @@
-import Visa from "../../assets/Visa.png";
-import MasterCard from "../../assets/MasterCard.png";
-import AmericanExpress from "../../assets/AmericanExpress.png";
+import Visa from "../../../../assets/Visa.png";
+import MasterCard from "../../../../assets/MasterCard.png";
+import AmericanExpress from "../../../../assets/AmericanExpress.png";
 
 export const getCreditCardBrand = (cardNumber: string): JSX.Element => {
 	const cleanedCardNumber = cardNumber.replace(/\s/g, "");

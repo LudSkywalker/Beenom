@@ -25,9 +25,9 @@ $ npm run preview
 
 ## Test the app
 
-This app is replacing jest with vitest because compatibility toolkits permit work better with vitest, and the sintaxis and logic of both are ver similar
+This app is replacing jest with vitest because compatibility toolkits permit work better with vite, and the sintaxis and logic of both are ver similar
 
 ```bash
-# development
+# test
 $ npm run test
 ```

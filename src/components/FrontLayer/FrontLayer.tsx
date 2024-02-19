@@ -1,7 +1,7 @@
 import "./FrontLayer.css";
-import Product from "../Product/Product";
-import History from "../History/History";
-import Prices from "../Prices/Prices";
+import Product from "./Product/Product";
+import History from "./History/History";
+import Prices from "./Prices/Prices";
 import { RootState } from "../../redux/store";
 import { useSelector } from "react-redux";
 

@@ -1,16 +1,19 @@
 import { cleanup, screen } from "@testing-library/react";
 import { it, describe, beforeAll, afterAll, expect } from "vitest";
-import { renderWithProviders } from "../../redux/test-utils";
+import { renderWithProviders } from "../../../../redux/test-utils";
 import Payment from "./Payment";
 import {
 	setPaymentData,
 	toggleOnPay,
 	ProcessPaymentStates,
-} from "../../redux/paymentSlice";
-import { store } from "../../redux/store";
+} from "../../../../redux/paymentSlice";
+import { store } from "../../../../redux/store";
+import userEvent, { UserEvent } from "@testing-library/user-event";
 
+let user: UserEvent;
 beforeAll(() => {
 	renderWithProviders(<Payment />);
+	user = userEvent.setup();
 });
 
 afterAll(() => {
@@ -65,7 +68,7 @@ describe("Payment", async () => {
 		expect(docNumberInput.value).toBe("");
 		expect(errors.innerText).toBe("");
 
-		await continueBtn.click();
+		await user.click(continueBtn);
 		expect(errors.innerText).not.toBe("");
 		expect(errors.innerText).toContain("Error");
 
@@ -93,19 +96,19 @@ describe("Payment", async () => {
 		expect(docTypeInput.value).toBe("Type");
 		expect(docNumberInput.value).toBe("100020000");
 
-		await continueBtn.click();
+		await user.click(continueBtn);
 		expect(errors.innerText).toBe("");
 		expect(store.getState().payment.processState).toBe(
 			ProcessPaymentStates.Confirm
 		);
 
 		const confirmBtn = await screen.findByText(/Confirm and Pay/i);
-		await confirmBtn.click();
+		await user.click(confirmBtn);
 		expect(store.getState().payment.processState).toBe(
 			ProcessPaymentStates.Success
 		);
 
-		await closeBtn.click();
+		await user.click(closeBtn);
 		expect(store.getState().payment.processState).toBe(
 			ProcessPaymentStates.Proccess
 		);
@@ -125,7 +128,7 @@ describe("Payment", async () => {
 		expect(docNumberInput.value).toBe("");
 		expect(errors.innerText).toBe("");
 
-		await continueBtn.click();
+		await user.click(continueBtn);
 		expect(errors.innerText).not.toBe("");
 		expect(errors.innerText).toContain("Error");
 
@@ -153,19 +156,19 @@ describe("Payment", async () => {
 		expect(docTypeInput.value).toBe("Type");
 		expect(docNumberInput.value).toBe("100020000");
 
-		await continueBtn.click();
+		await user.click(continueBtn);
 		expect(errors.innerText).toBe("");
 		expect(store.getState().payment.processState).toBe(
 			ProcessPaymentStates.Confirm
 		);
 
 		const confirmBtn = await screen.findByText(/Confirm and Pay/i);
-		await confirmBtn.click();
+		await user.click(confirmBtn);
 		expect(store.getState().payment.processState).toBe(
 			ProcessPaymentStates.Fail
 		);
 
-		await closeBtn.click();
+		await user.click(closeBtn);
 		expect(store.getState().payment.processState).toBe(
 			ProcessPaymentStates.Proccess
 		);
@@ -185,7 +188,7 @@ describe("Payment", async () => {
 		expect(docNumberInput.value).toBe("");
 		expect(errors.innerText).toBe("");
 
-		await continueBtn.click();
+		await user.click(continueBtn);
 		expect(errors.innerText).not.toBe("");
 		expect(errors.innerText).toContain("Error");
 
@@ -213,31 +216,31 @@ describe("Payment", async () => {
 		expect(docTypeInput.value).toBe("Type");
 		expect(docNumberInput.value).toBe("100020000");
 
-		await continueBtn.click();
+		await user.click(continueBtn);
 		expect(errors.innerText).toBe("");
 		expect(store.getState().payment.processState).toBe(
 			ProcessPaymentStates.Confirm
 		);
 
 		let editBtn = await screen.findByText(/Edit info/i);
-		await editBtn.click();
+		await user.click(editBtn);
 		expect(store.getState().payment.processState).toBe(
 			ProcessPaymentStates.Proccess
 		);
 
-		await continueBtn.click();
+		await user.click(continueBtn);
 		expect(store.getState().payment.processState).toBe(
 			ProcessPaymentStates.Confirm
 		);
 
 		let confirmBtn = await screen.findByText(/Confirm and Pay/i);
-		await confirmBtn.click();
+		await user.click(confirmBtn);
 		expect(store.getState().payment.processState).toBe(
 			ProcessPaymentStates.Fail
 		);
 
 		editBtn = await screen.findByText(/Edit info/i);
-		await editBtn.click();
+		await user.click(editBtn);
 		expect(store.getState().payment.processState).toBe(
 			ProcessPaymentStates.Proccess
 		);
@@ -249,19 +252,19 @@ describe("Payment", async () => {
 		);
 		expect(cardInput.value).toBe("4111 1111 1111 1111");
 
-		await continueBtn.click();
+		await user.click(continueBtn);
 		expect(errors.innerText).toBe("");
 		expect(store.getState().payment.processState).toBe(
 			ProcessPaymentStates.Confirm
 		);
 
 		confirmBtn = await screen.findByText(/Confirm and Pay/i);
-		await confirmBtn.click();
+		await user.click(confirmBtn);
 		expect(store.getState().payment.processState).toBe(
 			ProcessPaymentStates.Success
 		);
 
-		await closeBtn.click();
+		await user.click(closeBtn);
 		expect(store.getState().payment.processState).toBe(
 			ProcessPaymentStates.Proccess
 		);
@@ -273,11 +276,11 @@ describe("Payment", async () => {
 		const [minus] = await screen.findAllByText("-");
 		let testQuantity: number = parseInt(instalments.innerHTML);
 		expect(parseInt(instalments.innerHTML)).toBe(testQuantity);
-		await plus.click();
-		await plus.click();
+		await user.click(plus);
+		await user.click(plus);
 		testQuantity += 2;
 		expect(parseInt(instalments.innerHTML)).toBe(testQuantity);
-		await minus.click();
+		await user.click(minus);
 		testQuantity -= 1;
 		expect(parseInt(instalments.innerHTML)).toBe(testQuantity);
 	});

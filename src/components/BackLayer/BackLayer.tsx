@@ -17,7 +17,7 @@ function BackLayer() {
 		>
 			<div className="menu">
 				<div className="icon">
-					<img src={BeenomIcon} alt="" />
+					<img src={BeenomIcon} alt="Beenom icon" />
 					<h2>Beenom</h2>
 				</div>
 				<div

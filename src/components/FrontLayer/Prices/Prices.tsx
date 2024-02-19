@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./Prices.css";
-import { RootState } from "../../redux/store";
+import { RootState } from "../../../redux/store";
 import {
 	decrementQuantity,
 	incrementQuantity,
 	toggleOnPay,
-} from "../../redux/paymentSlice";
-import Payment from "../Payment/Payment";
+} from "../../../redux/paymentSlice";
+import Payment from "./Payment/Payment";
 
 function Prices() {
 	const {
@@ -18,7 +18,7 @@ function Prices() {
 	const dispatch = useDispatch();
 
 	return (
-		<div className={`prices ${onPay ? "active" : ""}`}>
+		<div className={`prices ${onPay ? "active" : ""}`} role="Content">
 			<div className={`pay-summary ${!onPay ? "active" : ""}`}>
 				<h1 role="title">Prices</h1>
 
